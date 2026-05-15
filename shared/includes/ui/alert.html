@@ -17,7 +17,7 @@
 		{%- include "ui/icon.html" icon=icon class="alert-icon" -%}
 	</div>
 	{% if include.description or include.list -%}
-		<div>
+		<div class="alert-text">
 			<h4 class="alert-heading">{{ include.title | default: "This is a custom alert box!" }}</h4>
 			<div class="alert-description">
 				{{ include.description | default: description }}
@@ -32,12 +32,14 @@
 			</div>
 		</div>
 	{%- else -%}
-		{{ include.title | default: "This is a custom alert box!" }}
-		{% if include.action -%}
-		<a href="#" class="alert-action">{{ include.action | default: "Action" }}</a>
-		{%- elsif include.link -%}
-		<a href="#" class="alert-link">{{ include.link | default: "Link" }}</a>
-		{%- endif %}
+		<div class="alert-text">
+			{{ include.title | default: "This is a custom alert box!" }}
+			{% if include.action -%}
+			<a href="#" class="alert-action">{{ include.action | default: "Action" }}</a>
+			{%- elsif include.link -%}
+			<a href="#" class="alert-link">{{ include.link | default: "Link" }}</a>
+			{%- endif %}
+		</div>
 	{%- endif -%}
 	{%- if include.buttons -%}
 	<div class="btn-list">
