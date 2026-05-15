@@ -1,16 +1,36 @@
 ---
-title: All Elements - Kitchen Sink
-page-header: All Elements
+title: UI Test - All Components
+page-header: UI Test
 page-menu: base.all-elements
-page-libs: [nouislider, star-rating.js, tabler-flags, tabler-payments, tom-select]
+page-libs: [apexcharts, autosize, coloris.js, dropzone, fullcalendar, hugerte, imask, jsvectormap, litepicker, nouislider, plyr, signature_pad, star-rating.js, tabler-flags, tabler-payments, tom-select]
 layout: default
 permalink: all-elements.html
 ---
 
 <div class="row row-cards">
-   <!-- Typography Section -->
    <div class="col-12">
       <div class="card">
+         <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3">
+               <div>
+                  <h2 class="mb-1">Single-page UI test surface</h2>
+                  <p class="text-secondary mb-0">Use this page to exercise the full top-nav-only preview and validate the main Tabler components in one place.</p>
+               </div>
+               <div class="ms-lg-auto">
+                  <div class="btn-list">
+                     <a href="#content" class="btn btn-primary">Jump to content</a>
+                     <button class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-demo">Open offcanvas</button>
+                     <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-demo">Open modal</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+    <!-- Typography Section -->
+    <div class="col-12">
+       <div class="card">
          <div class="card-header">
             <h3 class="card-title">Typography</h3>
          </div>
@@ -854,9 +874,9 @@ permalink: all-elements.html
        </div>
     </div>
 
-    <!-- Content Elements Section -->
-    <div class="col-md-6">
-       <div class="card">
+     <!-- Content Elements Section -->
+     <div class="col-md-6">
+        <div class="card">
           <div class="card-header">
              <h3 class="card-title">Content Elements</h3>
           </div>
@@ -877,8 +897,115 @@ function greetUser(name) {
 }</code></pre>
 
              <h4>Inline Elements</h4>
-             <p>This paragraph contains <code>inline code</code>, <kbd>Ctrl + S</kbd> keyboard shortcut, and <mark>highlighted text</mark>.</p>
-          </div>
+              <p>This paragraph contains <code>inline code</code>, <kbd>Ctrl + S</kbd> keyboard shortcut, and <mark>highlighted text</mark>.</p>
+           </div>
+        </div>
+     </div>
+
+     <div class="col-12">
+        <div class="card">
+           <div class="card-header">
+              <h3 class="card-title">Advanced Inputs</h3>
+           </div>
+           <div class="card-body">
+              <div class="row row-cards">
+                 <div class="col-md-6 col-xl-3">
+                    <label class="form-label">Date picker</label>
+                    {% include "ui/datepicker.html" id="ui-test-date" layout="icon" value="2026-05-15" %}
+                 </div>
+                 <div class="col-md-6 col-xl-3">
+                    <label class="form-label">Color picker</label>
+                    {% include "ui/colorpicker.html" id="ui-test-color" value="#206bc4" %}
+                 </div>
+                 <div class="col-md-6 col-xl-3">
+                    <label class="form-label">Enhanced select</label>
+                    {% include "ui/select.html" id="ui-test-select" values="Alpha,Beta,Gamma,Delta" %}
+                 </div>
+                 <div class="col-md-6 col-xl-3">
+                    <label class="form-label">Autosize textarea</label>
+                    <textarea class="form-control" data-bs-toggle="autosize" rows="2">This textarea grows automatically when you type more content into it.</textarea>
+                 </div>
+                 <div class="col-12">
+                    <label class="form-label">File upload</label>
+                    {% include "ui/dropzone.html" id="ui-test-dropzone" custom=true text="Drop files here" description="Drag and drop or click to upload" %}
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+
+     <div class="col-xl-6">
+        <div class="card h-100">
+           <div class="card-header">
+              <h3 class="card-title">Charts & Maps</h3>
+           </div>
+           <div class="card-body">
+              <div class="row row-cards">
+                 <div class="col-12">
+                    {% include "ui/chart.html" chart-id="mentions" id="ui-test-chart" size="lg" legend=true %}
+                 </div>
+                 <div class="col-12">
+                    {% include "ui/map-vector.html" map-id="world" ratio="16x9" %}
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+
+     <div class="col-xl-6">
+        <div class="card h-100">
+           <div class="card-header">
+              <h3 class="card-title">Calendar & Carousel</h3>
+           </div>
+           <div class="card-body">
+              <div class="mb-4">
+                 {% include "ui/fullcalendar.html" id="ui-test-calendar" sample-events=true %}
+              </div>
+              {% include "ui/carousel.html" id="ui-test-carousel" controls=true indicators=true captions=true limit=3 %}
+           </div>
+        </div>
+     </div>
+
+     <div class="col-xl-6">
+        <div class="card h-100">
+           <div class="card-header">
+              <h3 class="card-title">Rich Text & Signature</h3>
+           </div>
+           <div class="card-body">
+              <div class="mb-4">
+                 {% include "ui/wysiwyg.html" id="ui-test-editor" %}
+              </div>
+              {% include "ui/signature.html" id="ui-test-signature" clear=true class="border rounded p-3" height=220 %}
+           </div>
+        </div>
+     </div>
+
+     <div class="col-xl-6">
+        <div class="card h-100">
+           <div class="card-header">
+              <h3 class="card-title">Media & Data</h3>
+           </div>
+           <div class="card-body">
+              <div class="mb-4">
+                 {% include "ui/inline-player.html" id="ui-test-player" embed-id="dQw4w9WgXcQ" %}
+              </div>
+              {% include "ui/table.html" avatars=true buttons=true limit=4 mobile=true %}
+           </div>
+        </div>
+     </div>
+ </div>
+
+ <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-demo" aria-labelledby="offcanvas-demo-label">
+    <div class="offcanvas-header">
+       <h2 class="offcanvas-title" id="offcanvas-demo-label">Offcanvas panel</h2>
+       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+       <div class="space-y">
+          <p class="text-secondary">This panel gives the UI test page an offcanvas target for interaction checks.</p>
+          {% include "ui/button.html" text="Primary action" color="primary" %}
+          {% include "ui/progress.html" value="72" color="primary" show-value=true %}
+          {% include "ui/alert.html" type="info" title="Offcanvas content is visible and interactive." %}
        </div>
     </div>
  </div>
